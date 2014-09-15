@@ -9,9 +9,19 @@ function Game(player1, player2) {
 
 
 Player.prototype.picks = function(pick) {
-  // body...
+	this.pick = pick	
+  	// body...
 };
 
+Game.prototype.PAIRS = {
+	rock: 'scissors',
+	paper: 'rock',
+	scissors: 'paper',
+};
+
+
 Game.prototype.winner = function() {
-    return this.player1;
+    if(this.PAIRS[this.player1.pick] === this.player2.pick) return this.player1;
+    if(this.PAIRS[this.player2.pick] === this.player1.pick) return this.player2;
+    if(this.player1.pick === this.player2.pick) return null;
 };
